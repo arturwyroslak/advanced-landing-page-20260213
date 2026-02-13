@@ -1,22 +1,23 @@
 # Zaawansowany Landing Page
 
-Projekt: zaawansowany, responsywny landing page z animacjami, formularzem zapisu i dokumentacją.
+Repozytorium zawiera przykładowy, responsywny landing page z prostymi animacjami i formularzem zapisu.
 
-Funkcje:
-- Sekcja hero z CTA
-- Lista funkcji
-- Responsywne style z animacjami
-- Formularz zapisu z walidacją
-- Prosty modal i smooth-scroll
+Pliki:
+- index.html - główna strona
+- assets/css/styles.css - style
+- assets/js/main.js - interaktywność (formularz, smooth scroll, modal)
 
-Struktura:
+Uruchomienie lokalne:
+1. Otwórz index.html w przeglądarce (plik statyczny) lub
+2. Uruchom prosty serwer deweloperski w katalogu repozytorium, np.:
 
-- index.html
-- assets/
-  - css/styles.css
-  - js/main.js
-  - images/
+   python3 -m http.server 8000
 
-Instrukcje:
-1. Otwórz index.html w przeglądarce.
-2. Aby wdrożyć: użyj GitHub Pages (branch: main / docs folder lub root).
+   i odwiedź http://localhost:8000
+
+Wdrożenie (GitHub Pages):
+- Projekt jest skonfigurowany do automatycznego wdrożenia na GitHub Pages przy użyciu GitHub Actions.
+- Po pushu do gałęzi main, GitHub Actions opublikuje zawartość katalogu root na branchu gh-pages.
+
+Uwaga:
+- Formularze w projekcie symulują wysyłkę (brak backendu)."},{ 
