@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Zaawansowany Landing Page</title>
+  <meta name="description" content="Responsywny landing page z animacjami i formularzem zapisu">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="#">BrandName</a>
+      <nav>
+        <ul>
+          <li><a href="#features">Funkcje</a></li>
+          <li><a href="#pricing">Cennik</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+          <li><a class="btn" href="#signup">Zapisz się</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>Twoje rozwiązanie. Szybciej. Łatwiej. Lepiej.</h1>
+          <p>Budujemy narzędzia które pomagają zespołom dostarczać wartość szybciej — z przyjemnością i stylem.</p>
+          <form id="signup" class="signup-form" aria-label="Formularz zapisu">
+            <label for="email" class="visually-hidden">Adres e-mail</label>
+            <input type="email" id="email" name="email" placeholder="Twój email" required>
+            <button type="submit">Zapisz się</button>
+          </form>
+          <p class="muted">Bez spamowania. Anuluj w każdej chwili.</p>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <!-- Simple SVG illustration -->
+          <svg width="360" height="240" viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <rect width="360" height="240" rx="16" fill="#f5f7ff"/>
+            <circle cx="80" cy="80" r="36" fill="#7c5cff" opacity="0.9"/>
+            <rect x="140" y="40" width="180" height="24" rx="6" fill="#ffd47a"/>
+            <rect x="140" y="80" width="120" height="16" rx="6" fill="#bfe9ff"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <div class="container">
+        <h2>Funkcje, które pokochasz</h2>
+        <div class="feature-grid">
+          <article class="feature">
+            <h3>Szybkie wdrożenie</h3>
+            <p>Gotowe komponenty i prosty setup — zacznij w kilka minut.</p>
+          </article>
+          <article class="feature">
+            <h3>Responsywność</h3>
+            <p>Świetne doświadczenie na każdym urządzeniu — mobilne, tablet, desktop.</p>
+          </article>
+          <article class="feature">
+            <h3>Animacje</h3>
+            <p>Płynne i subtelne animacje poprawiające UX.</p>
+          </article>
+          <article class="feature">
+            <h3>Bezpieczeństwo</h3>
+            <p>Podstawowe praktyki bezpieczeństwa i ochrona danych użytkowników.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta" class="cta">
+      <div class="container">
+        <h2>Gotowy, żeby zacząć?</h2>
+        <p>Dołącz do społeczności i otrzymaj dostęp do materiałów i aktualizacji.</p>
+        <a class="btn large" href="#signup">Zapisz się</a>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <a class="logo" href="#">BrandName</a>
+        <p class="muted">© 2026 BrandName — Wszystkie prawa zastrzeżone.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <p>email@brandname.pl</p>
+      </div>
+      <div class="footer-col">
+        <h4>Linki</h4>
+        <ul>
+          <li><a href="#">Polityka prywatności</a></li>
+          <li><a href="#">Regulamin</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <form class="signup-form" aria-label="Formularz zapisu stopka">
+          <label for="footer-email" class="visually-hidden">Adres e-mail</label>
+          <input type="email" id="footer-email" name="email" placeholder="Twój email">
+          <button type="submit">Zapisz</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
