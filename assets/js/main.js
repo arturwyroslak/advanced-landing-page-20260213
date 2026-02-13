@@ -1,68 +1,106 @@
-// main.js - Interactivity for Advanced Landing Page
-// Features: smooth scroll, basic form validation & simulated submission, modal success
+// Main JS for Advanced Landing Page
+// - IntersectionObserver for entry animations
+// - Smooth scrolling for internal links
+// - Simple form validation with fake submission
+// - Sticky CTA behavior
 
-document.addEventListener('DOMContentLoaded', function () {
-  // Smooth scroll for internal links
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener('click', function (e) {
-      var targetId = this.getAttribute('href').slice(1);
-      var target = document.getElementById(targetId);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
+(function(){
+  'use strict';
 
-  // Simple email validation
-  function validateEmail(email) {
-    return /^\S+@\S+\.\S+$/.test(email);
+  // helper: select
+  const $ = (sel, ctx=document)=> (ctx || document).querySelector(sel);
+  const $$ = (sel, ctx=document)=> Array.from((ctx || document).querySelectorAll(sel));
+
+  // ENTRY ANIMATIONS
+  function initEntryObserver(){
+    const els = $$('.fade-in');
+    if(!els.length || !('IntersectionObserver' in window)){
+      els.forEach(e=>e.classList.add('visible'));
+      return;
+    }
+    const ob = new IntersectionObserver((entries, obs)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      })
+    },{threshold:0.12});
+    els.forEach(e=>ob.observe(e));
   }
 
-  // Modal utilities
-  function createModal() {
-    var modal = document.createElement('div');
-    modal.className = 'aw-modal';
-    modal.innerHTML = '\n      <div class="aw-modal-backdrop" tabindex="-1"></div>\n      <div class="aw-modal-panel" role="dialog" aria-modal="true">\n        <button class="aw-modal-close" aria-label="Zamknij">✕</button>\n        <div class="aw-modal-content">\n          <h3>Dziękujemy za zapis!</h3>\n          <p>Wysłaliśmy potwierdzenie na Twój adres e-mail (symulacja).</p>\n        </div>\n      </div>';
-    document.body.appendChild(modal);
-
-    modal.querySelector('.aw-modal-close').addEventListener('click', function () {
-      modal.remove();
-    });
-    modal.querySelector('.aw-modal-backdrop').addEventListener('click', function () {
-      modal.remove();
-    });
+  // SMOOTH SCROLL
+  function initSmoothScroll(){
+    const links = $$('a[href^="#"]');
+    links.forEach(link=>{
+      link.addEventListener('click', e=>{
+        const href = link.getAttribute('href');
+        if(!href || href==="#") return;
+        const target = document.querySelector(href);
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({behavior:'smooth', block:'start'});
+          history.pushState(null,'',href);
+        }
+      })
+    })
   }
 
-  // Hook up forms
-  document.querySelectorAll('.signup-form').forEach(function (form) {
-    form.addEventListener('submit', function (e) {
+  // FORM HANDLING
+  function initForm(){
+    const form = $('#signup-form');
+    if(!form) return;
+    const email = form.querySelector('input[type="email"]');
+    const msg = $('#signup-msg');
+
+    function validateEmail(v){
+      return /\S+@\S+\.\S+/.test(v);
+    }
+
+    form.addEventListener('submit', e=>{
       e.preventDefault();
-      var input = form.querySelector('input[type="email"]');
-      if (!input) return;
-      var email = input.value.trim();
-      if (!validateEmail(email)) {
-        input.classList.add('invalid');
-        input.setAttribute('aria-invalid', 'true');
-        // simple accessible live region fallback
-        alert('Proszę podać poprawny adres e-mail');
+      if(!email) return;
+      const val = email.value.trim();
+      if(!validateEmail(val)){
+        msg.textContent = 'Proszę podać poprawny adres email.';
+        msg.style.color = '#ffb4b4';
+        email.focus();
         return;
       }
-      // Simulate submission delay
-      var submitBtn = form.querySelector('button[type="submit"]');
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Wysyłanie...';
+      // simulate submission
+      msg.textContent = 'Wysyłam...';
+      msg.style.color = '#94a3b8';
+      setTimeout(()=>{
+        msg.textContent = 'Dziękujemy! Sprawdź swoją skrzynkę — wysłaliśmy potwierdzenie.';
+        msg.style.color = 'lightgreen';
+        form.reset();
+      },1000);
+    })
+  }
+
+  // STICKY CTA on scroll for mobile
+  function initStickyCTA(){
+    const cta = document.querySelector('.cta-bar');
+    if(!cta) return;
+    let lastScroll = window.scrollY;
+    window.addEventListener('scroll', ()=>{
+      const cur = window.scrollY;
+      if(cur > 120 && cur > lastScroll){
+        // scrolling down -> hide
+        cta.style.transform = 'translateY(110%)';
+      } else {
+        cta.style.transform = 'translateY(0)';
       }
-      setTimeout(function () {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Zapisz się';
-        }
-        // Clear input
-        input.value = '';
-        createModal();
-      }, 900);
-    });
+      lastScroll = cur;
+    })
+  }
+
+  // INIT
+  document.addEventListener('DOMContentLoaded', ()=>{
+    initEntryObserver();
+    initSmoothScroll();
+    initForm();
+    initStickyCTA();
   });
-});
+
+})();
