@@ -3,106 +3,141 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Zaawansowany Landing Page</title>
-  <meta name="description" content="Responsywny landing page z animacjami i formularzem zapisu">
+  <title>Advanced Landing Page</title>
+  <meta name="description" content="Nowoczesny landing page z sekcjami features, testimonials, pricing i CTA.">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <a class="logo" href="#">BrandName</a>
-      <nav>
-        <ul>
-          <li><a href="#features">Funkcje</a></li>
-          <li><a href="#pricing">Cennik</a></li>
-          <li><a href="#contact">Kontakt</a></li>
-          <li><a class="btn" href="#signup">Zapisz się</a></li>
-        </ul>
-      </nav>
+  <header class="container header" role="banner">
+    <div class="logo" aria-hidden="false"> 
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><rect width="24" height="24" rx="6" fill="#7c3aed"></rect></svg>
+      <span>BrandName</span>
+    </div>
+    <nav class="nav" role="navigation" aria-label="Główne menu">
+      <a href="#features">Funkcje</a>
+      <a href="#pricing">Cennik</a>
+      <a href="#testimonials">Opinie</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div>
+      <a class="btn" href="#signup">Zacznij</a>
     </div>
   </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <h1>Twoje rozwiązanie. Szybciej. Łatwiej. Lepiej.</h1>
-          <p>Budujemy narzędzia które pomagają zespołom dostarczać wartość szybciej — z przyjemnością i stylem.</p>
-          <form id="signup" class="signup-form" aria-label="Formularz zapisu">
-            <label for="email" class="visually-hidden">Adres e-mail</label>
-            <input type="email" id="email" name="email" placeholder="Twój email" required>
-            <button type="submit">Zapisz się</button>
-          </form>
-          <p class="muted">Bez spamowania. Anuluj w każdej chwili.</p>
+  <main class="container" role="main">
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <div class="eyebrow">Nowość • 2026</div>
+        <h1 id="hero-title">Zbuduj szybciej lepsze doświadczenia dla użytkowników</h1>
+        <p>Zaawansowany landing page z intuicyjnym układem, animacjami i responsywną typografią. Gotowy do wdrożenia i personalizacji.</p>
+        <div style="margin-top:1.2rem;display:flex;gap:0.8rem;align-items:center">
+          <a class="btn" href="#signup">Wypróbuj za darmo</a>
+          <a class="btn secondary" href="#pricing">Zobacz cennik</a>
         </div>
-        <div class="hero-visual" aria-hidden="true">
-          <!-- Simple SVG illustration -->
-          <svg width="360" height="240" viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-            <rect width="360" height="240" rx="16" fill="#f5f7ff"/>
-            <circle cx="80" cy="80" r="36" fill="#7c5cff" opacity="0.9"/>
-            <rect x="140" y="40" width="180" height="24" rx="6" fill="#ffd47a"/>
-            <rect x="140" y="80" width="120" height="16" rx="6" fill="#bfe9ff"/>
-          </svg>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <!-- Inline placeholder SVG illustration -->
+        <svg width="360" height="220" viewBox="0 0 360 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustracja produktu">
+          <rect x="0" y="0" width="360" height="220" rx="12" fill="url(#g)" />
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0" stop-color="#7c3aed" stop-opacity="0.9"/>
+              <stop offset="1" stop-color="#06b6d4" stop-opacity="0.8"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </section>
+
+    <section id="features" class="features" aria-labelledby="features-title">
+      <h2 id="features-title" class="text-center" style="grid-column:1/-1">Funkcje</h2>
+      <article class="card fade-in" tabindex="0">
+        <h3>Wydajność</h3>
+        <p>Optymalizowany kod i lekkie zasoby — szybkie ładowanie nawet na wolnych łączach.</p>
+      </article>
+      <article class="card fade-in" tabindex="0">
+        <h3>Dostępność</h3>
+        <p>Projekt zgodny z wytycznymi a11y, teksty alternatywne i logiczna nawigacja.</p>
+      </article>
+      <article class="card fade-in" tabindex="0">
+        <h3>Łatwa personalizacja</h3>
+        <p>Proste zmienne CSS i czytelna struktura ułatwiają modyfikacje wyglądu.</p>
+      </article>
+    </section>
+
+    <section id="testimonials" class="container testimonials" aria-labelledby="testimonials-title">
+      <h2 id="testimonials-title" class="text-center" style="grid-column:1/-1">Opinie</h2>
+      <div class="testimonial card fade-in">
+        <div class="avatar" aria-hidden="true"></div>
+        <div>
+          <strong>Anna Kowalska</strong>
+          <p>Świetny szablon — wdrożyliśmy landing page w 2 dni, a konwersja wzrosła o 32%.</p>
+        </div>
+      </div>
+      <div class="testimonial card fade-in">
+        <div class="avatar" aria-hidden="true"></div>
+        <div>
+          <strong>Jan Nowak</strong>
+          <p>Responsywny i estetyczny — polecam do prezentacji produktów cyfrowych.</p>
         </div>
       </div>
     </section>
 
-    <section id="features" class="features">
-      <div class="container">
-        <h2>Funkcje, które pokochasz</h2>
-        <div class="feature-grid">
-          <article class="feature">
-            <h3>Szybkie wdrożenie</h3>
-            <p>Gotowe komponenty i prosty setup — zacznij w kilka minut.</p>
-          </article>
-          <article class="feature">
-            <h3>Responsywność</h3>
-            <p>Świetne doświadczenie na każdym urządzeniu — mobilne, tablet, desktop.</p>
-          </article>
-          <article class="feature">
-            <h3>Animacje</h3>
-            <p>Płynne i subtelne animacje poprawiające UX.</p>
-          </article>
-          <article class="feature">
-            <h3>Bezpieczeństwo</h3>
-            <p>Podstawowe praktyki bezpieczeństwa i ochrona danych użytkowników.</p>
-          </article>
-        </div>
+    <section id="pricing" class="pricing" aria-labelledby="pricing-title">
+      <h2 id="pricing-title" class="text-center" style="grid-column:1/-1">Cennik</h2>
+      <div class="plan card fade-in">
+        <h3>Basic</h3>
+        <div class="price">0 zł</div>
+        <p>Do użytku osobistego, podstawowe funkcje.</p>
+        <a class="btn" href="#signup">Wybierz</a>
+      </div>
+      <div class="plan card fade-in">
+        <h3>Pro</h3>
+        <div class="price">49 zł / miesiąc</div>
+        <p>Zaawansowane opcje i wsparcie.</p>
+        <a class="btn" href="#signup">Wybierz</a>
+      </div>
+      <div class="plan card fade-in">
+        <h3>Enterprise</h3>
+        <div class="price">Na zapytanie</div>
+        <p>Indywidualne rozwiązania dla firm.</p>
+        <a class="btn" href="#signup">Kontakt</a>
       </div>
     </section>
 
-    <section id="cta" class="cta">
-      <div class="container">
-        <h2>Gotowy, żeby zacząć?</h2>
-        <p>Dołącz do społeczności i otrzymaj dostęp do materiałów i aktualizacji.</p>
-        <a class="btn large" href="#signup">Zapisz się</a>
-      </div>
+    <section id="signup" class="card" aria-labelledby="signup-title">
+      <h2 id="signup-title">Zapisz się na demo</h2>
+      <form id="signup-form" aria-describedby="signup-desc">
+        <p id="signup-desc" class="muted">Wpisz swój email, by otrzymać darmowy dostęp.</p>
+        <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem">
+          <label class="sr-only" for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="Twój email" required style="padding:0.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;flex:1;min-width:220px">
+          <button class="btn" type="submit">Zapisz się</button>
+        </div>
+        <div id="signup-msg" role="status" aria-live="polite" style="margin-top:0.6rem"></div>
+      </form>
     </section>
+
+    <section id="faq" class="card" aria-labelledby="faq-title">
+      <h2 id="faq-title">FAQ</h2>
+      <details>
+        <summary>Jak mogę wdrożyć stronę?</summary>
+        <p>Proste: wypchnij na GH Pages lub skorzystaj z dowolnego hosta statycznego.</p>
+      </details>
+      <details>
+        <summary>Czy mogę zmienić kolory?</summary>
+        <p>Tak — wystarczy edytować zmienne w assets/css/styles.css.</p>
+      </details>
+    </section>
+
   </main>
 
-  <footer id="contact" class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-col">
-        <a class="logo" href="#">BrandName</a>
-        <p class="muted">© 2026 BrandName — Wszystkie prawa zastrzeżone.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Kontakt</h4>
-        <p>email@brandname.pl</p>
-      </div>
-      <div class="footer-col">
-        <h4>Linki</h4>
-        <ul>
-          <li><a href="#">Polityka prywatności</a></li>
-          <li><a href="#">Regulamin</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <form class="signup-form" aria-label="Formularz zapisu stopka">
-          <label for="footer-email" class="visually-hidden">Adres e-mail</label>
-          <input type="email" id="footer-email" name="email" placeholder="Twój email">
-          <button type="submit">Zapisz</button>
-        </form>
+  <footer class="container" role="contentinfo">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
+      <div>© 2026 BrandName. Wszelkie prawa zastrzeżone.</div>
+      <div>
+        <a class="btn btn--ghost" href="#">Polityka prywatności</a>
       </div>
     </div>
   </footer>
